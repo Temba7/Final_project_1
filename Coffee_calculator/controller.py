@@ -13,7 +13,7 @@ class Controller(QMainWindow, Ui_MainWindow):
     """
 
     prices = {
-        "Coffee Frappuccino": {"Tall": 2.95, "Grande": 3.65, "Venti": 4.15},
+        "Coffee Frappuccino": {"Tall": 2.95, "Grande": 3.65, "Venti": 4.15},                          #prices of the drinks 
         "Coffee Latte": {"Tall": 2.95, "Grande": 3.99, "Venti": 4.45},
         "Iced Coffee": {"Tall": 2.25, "Grande": 2.65, "Venti": 2.96}
     }
@@ -26,7 +26,7 @@ class Controller(QMainWindow, Ui_MainWindow):
         self.pushButton.clicked.connect(lambda: self.submit())
         self.pushButton_2.clicked.connect(lambda: self.buy())
 
-    def submit(self) -> None:
+    def submit(self):
         """"
         Method to access the customer's want and size of their cup
         """
@@ -34,7 +34,7 @@ class Controller(QMainWindow, Ui_MainWindow):
         want = self.comboBox.currentText()
         size = self.comboBox_2.currentText()
         self.order_price = self.prices[want][size]
-
+                                                       
         self.order_summary.setText(f"{want}, {size}: ${self.order_price:.2f}")
 
     def buy(self):
@@ -54,7 +54,7 @@ class Controller(QMainWindow, Ui_MainWindow):
                 self.final_receipt.setText(f" Your $ {total} is not enough,you need {abs(amount):.2f} to buy something.")
 
         except ValueError:
-            self.final_receipt.setText(f"Please insert the money!")
+            self.final_receipt.setText(f"Please insert the money!")     # in case thier money is not enough 
 
 
 
